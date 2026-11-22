@@ -1,9 +1,57 @@
 <!doctype html>
-<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#faf4fc"><title>喵喵大師尋寶｜三個生命故事</title>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#faf4fc"><title>喵喵大師尋寶｜16:9 課堂投影版</title>
 <style>
 :root{font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC",system-ui,sans-serif;background:#fff9f5;color:#322a3b}*{box-sizing:border-box}body{margin:0;padding:14px}.container{max-width:1120px;margin:auto}header{text-align:center;padding:12px 0 7px}h1{font-size:clamp(25px,3vw,38px);margin:4px}.subtitle{color:#74697a;font-size:14px}.panel{background:white;border:1px solid #eadde7;border-radius:18px;box-shadow:0 7px 27px #6a4d7311;padding:17px;margin:12px 0}.line{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.space{justify-content:space-between}.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:13px}@media(max-width:830px){.layout{grid-template-columns:1fr}}button,select{font:inherit}button{border:1px solid #daccdc;border-radius:10px;padding:10px 13px;background:#fff;color:#594667;cursor:pointer;font-weight:700;touch-action:manipulation}button:hover:not(:disabled){filter:brightness(.96)}button:disabled{cursor:default;opacity:.65}.primary,.active{background:#7855a2;border-color:#7855a2;color:#fff}select{border:1px solid #d4c8d8;background:white;padding:10px;border-radius:10px;min-width:150px;max-width:100%}label{font-weight:700;font-size:13px;display:block;margin-bottom:5px}.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:end}.pill{border-radius:50px;padding:6px 11px;background:#f1e8f7;font-weight:700;font-size:13px}.muted{color:#84778a;font-size:13px;line-height:1.6}.boardframe{background:#faf4fb;border-radius:14px;padding:10px;margin-top:11px}.board{display:grid;gap:4px;grid-template-columns:27px repeat(var(--cols),minmax(0,1fr));max-width:710px;margin:auto}.axis{display:grid;place-items:center;min-width:0;aspect-ratio:1;color:#715b7c;font-weight:800;font-size:clamp(12px,1.5vw,17px)}.tile{aspect-ratio:1;min-width:0;width:100%;padding:0;border-radius:6px;border:1px solid #ffffffad;display:grid;place-items:center;overflow:hidden}.tile.fixed{box-shadow:inset 0 0 0 3px #6b557d}.tile .cross{font-size:clamp(18px,3vw,38px);color:#6e5669}.tile .auto{font-size:clamp(12px,2vw,25px);color:#8d7188;opacity:.7}.tile svg{width:96%;height:96%;display:block}.tile:disabled{opacity:1}.feedback{border-radius:11px;background:#f6eff9;padding:12px;margin-top:10px;min-height:48px;font-size:14px;line-height:1.5}.feedback.bad{background:#fff0ee;color:#9b313a}.feedback.good{background:#eaf8f0;color:#176943}.buttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:11px}.records{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.record{text-align:left;padding:10px;min-width:0;background:#fff}.record.selected{background:#f3edfa;border-color:#a98cc7}.record strong,.record span{display:block}.record strong{font-size:14px}.record span{font-size:12px;color:#7a6983;overflow-wrap:anywhere;margin-top:5px}.record .done{color:#237653;font-weight:650}.topics{display:grid;gap:7px}.topic{border-radius:11px;padding:10px;background:#f8f3fa;font-size:13px;line-height:1.6}.topic strong{display:block}.overlay{position:fixed;inset:0;background:#25182ba8;z-index:99;display:none;align-items:center;justify-content:center;padding:14px}.overlay.show{display:flex}.dialog{background:#fff5fa;border-radius:25px;padding:26px 22px;max-width:620px;width:100%;text-align:center;box-shadow:0 12px 50px #20152a55}.dialog .emoji{font-size:50px}.dialog h2{font-size:clamp(27px,6vw,48px);color:#9a3868;line-height:1.25;margin:16px auto;overflow-wrap:anywhere}.dialog p{color:#7d6175}.dialog button{width:100%;margin-top:12px;padding:14px}.footer{text-align:center;color:#9c8d9f;font-size:12px;padding:20px}.stage button{flex:1}.stage{display:flex;gap:8px;margin:10px 0}.donealert{background:#e9f6ef;color:#1c7149;border-radius:11px;padding:12px;margin-top:10px}@media(max-width:600px){body{padding:7px}.panel{padding:11px}.boardframe{padding:4px}.board{gap:2px;grid-template-columns:21px repeat(var(--cols),minmax(0,1fr))}.tile{border-radius:3px}.tile .cross{font-size:19px}.tile .auto{font-size:14px}.records{gap:5px}.record{padding:8px}.axis{font-size:12px}}
+
+/* 16:9 projector layout: preserve full size board, controls and group ledger on screen */
+@media (min-width:1050px) and (orientation:landscape){
+  body{padding:8px 18px;background:#fff9f5}
+  .container{max-width:1840px}
+  header{display:flex;align-items:center;justify-content:center;gap:18px;padding:3px 0 2px}
+  h1{font-size:clamp(23px,2vw,32px);margin:2px 0}
+  .subtitle{font-size:13px}
+  .panel{margin:7px 0;padding:12px 14px;border-radius:15px}
+  .container > section.panel{padding:9px 14px}
+  .container > section.panel .muted{margin:5px 0 0;font-size:12px;line-height:1.35}
+  .controls{gap:16px;align-items:center}
+  .controls label{margin-bottom:2px;font-size:12px}
+  .controls button,.controls select{padding:7px 10px}
+  .layout{grid-template-columns:minmax(0,1.38fr) minmax(390px,.82fr);gap:12px;align-items:start}
+  .layout > div > .panel:first-child{padding:10px 14px}
+  .boardframe{margin-top:6px;padding:6px}
+  .board{max-width:min(820px,calc(100vh - 250px));gap:3px;grid-template-columns:28px repeat(var(--cols),minmax(0,1fr))}
+  .axis{font-size:clamp(15px,1.35vw,21px)}
+  .tile{border-radius:5px}
+  .tile .cross{font-size:clamp(22px,2.2vw,38px)}
+  .tile .auto{font-size:clamp(18px,1.8vw,28px)}
+  .feedback{min-height:38px;margin-top:6px;padding:9px 10px}
+  .buttons{margin-top:7px}
+  .buttons button{padding:8px 10px}
+  .stage{margin:6px 0}
+  aside .panel{padding:12px 14px}
+  aside h3{font-size:17px;margin-bottom:9px}
+  .records{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+  .record{padding:10px 9px;min-height:70px}
+  .record strong{font-size:14px}
+  .record span{font-size:12px;line-height:1.3}
+  .topics{grid-template-columns:1fr;gap:5px}
+  .topic{padding:7px 10px;font-size:12px}
+  .layout > div > .panel:nth-child(2){padding:8px 12px}
+  .layout > div > .panel:nth-child(2) p{margin:4px 0;font-size:12px;line-height:1.35}
+  .footer{padding:6px;font-size:11px}
+}
+@media (min-width:1050px) and (orientation:landscape) and (max-height:800px){
+  .board{max-width:min(640px,calc(100vh - 214px))}
+  .panel{margin:5px 0}
+  .container > section.panel .muted{display:none}
+  aside .panel:last-child .muted{display:none}
+}
+@media (min-width:1050px) and (orientation:landscape) and (max-width:1400px){
+  .layout{grid-template-columns:minmax(0,1.25fr) minmax(340px,.75fr)}
+  .records{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 </style></head><body>
-<main class="container"><header><h1>🐱 喵喵大師尋寶</h1><div class="subtitle">推理找貓咪・解鎖課文人物・答錯換下一組</div></header>
+<main class="container"><header><h1>🐱 喵喵大師尋寶</h1><div class="subtitle">16:9 橫向投影版｜推理找貓咪・解鎖人物・答錯換組</div><button type="button" id="fullscreenBtn" title="全螢幕投影">⛶ 全螢幕</button></header>
 <section class="panel"><div class="controls"><div><label for="version">選擇版本</label><select id="version"><option value="6">6 組版（單關）</option><option value="9">9 組版（5＋4 兩關）</option></select></div><div><label for="group">目前挑戰組別</label><select id="group"></select></div><div><label>操作模式</label><div class="line"><button id="crossBtn" class="active">✕ 排除格子</button><button id="catBtn">🐱 放貓咪</button></div></div><span id="progress" class="pill">0 / 6 組</span></div><p class="muted">選錯貓咪位置，立即跳到下一個尚未抽到主題的組別；答對則放大揭曉，並自動記錄。排除 ✕ 不算答題，也不會換組。</p></section>
 <div class="layout"><div><section class="panel"><div class="line space"><strong id="boardTitle">6 組版 · 7×7</strong><span class="pill" id="catCount">🐱 1 / 7</span></div><div class="stage" id="stageBar" hidden><button id="stage0">第一關｜5 組</button><button id="stage1">第二關｜4 組</button></div><div class="boardframe"><div id="board" class="board" aria-label="貓咪推理棋盤"></div></div><div class="feedback" id="feedback" role="status">先選組別，再用 ✕ 排除位置。</div><div class="buttons"><button id="hintBtn">💡 提示</button><button id="copyBtn">📋 複製名單</button><button id="resetBtn">↻ 重設本版本</button></div><div id="completion"></div></section><section class="panel"><strong>遊戲規則</strong><p class="muted">每一行、每一列、每一個顏色區塊都要有且只有一隻貓咪，並且兩隻貓咪不能位在同一條斜線（無論距離）。開局已放好的貓咪不能移動，也不會抽出人物。座標採「列數字＋欄字母」，例如 1A、6B。</p><p class="muted">棋盤上的小 × 為系統根據已找到的貓咪自動排除；較大的 ✕ 是題目線索或手動排除。只會在放貓咪模式判斷答對或答錯。</p></section></div>
 <aside><section class="panel"><h3 style="margin-top:0">各組抽取紀錄</h3><div id="records" class="records"></div><p class="muted">點選某組卡片也能直接切換。已抽取的組別會自動略過。</p></section><section class="panel"><h3 style="margin-top:0">三個探索主題</h3><div class="topics"><div class="topic"><strong>💜 抗萎天使——楊媛甯</strong>生命故事、勇氣與堅持</div><div class="topic"><strong>🩺 把醫療帶回家鄉——徐超斌醫師</strong>醫療、家鄉與行動</div><div class="topic"><strong>🌳 為未來種下一座森林——賴倍元</strong>環境、永續與長期投入</div></div><p class="muted">6 組版：每個主題各 2 組。9 組版：每個主題各 3 組。</p></section></aside></div></main>
@@ -55,6 +103,7 @@ if(!p.solution.includes(i)){
 }
 const old=state.selected,topic=state.topics[recordCount()];b.cats.push(i);state.assignments[old]={topic,coord:at,stage:state.stage+1};render();$('personEmoji').textContent=TOPICS[topic].emoji+' 🐱';$('personGroup').textContent=`🎉 第 ${old} 組在 ${at} 找到貓咪！`;$('personName').textContent=TOPICS[topic].name;$('personDesc').textContent=TOPICS[topic].desc;$('overlay').classList.add('show');notify(`✅ 第 ${old} 組成功解鎖 ${TOPICS[topic].name}`,'good')}
 $('continueBtn').addEventListener('click',()=>{$('overlay').classList.remove('show');const next=nextUnassigned(state.selected);if(next!==null)state.selected=next;render();if(recordCount()===state.mode)notify('🎊 全部組別都抽到主題了！','good');else if(board().cats.length===puzzle().n&&state.mode===9&&state.stage===0)notify('第一關已完成，請點「進入第二關」。','good');else notify(`輪到第 ${state.selected} 組，請繼續挑戰。`)});
+$('fullscreenBtn').addEventListener('click',()=>{if(document.fullscreenElement){document.exitFullscreen?.()}else{document.documentElement.requestFullscreen?.().catch(()=>{notify('此瀏覽器不支援全螢幕，仍可直接以橫向投影。')})}});
 $('version').addEventListener('change',e=>{const mode=Number(e.target.value);if(mode===state.mode)return;if(recordCount()&&!confirm('切換模式會清除目前版本的分組紀錄與進度。確定切換？')){e.target.value=state.mode;return}state=initial(mode);render();notify(`已切換 ${mode} 組版。`)});
 $('group').addEventListener('change',e=>{state.selected=Number(e.target.value);render();notify(`已選擇第 ${state.selected} 組。`)});
 $('stage0').addEventListener('click',()=>switchStage(0));$('stage1').addEventListener('click',()=>switchStage(1));
